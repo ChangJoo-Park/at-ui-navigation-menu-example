@@ -1,20 +1,9 @@
 <template>
   <div id="app">
-    <at-menu mode="horizontal" active-Name="1">
-      <at-menu-item name="1"><i class="icon icon-home"></i>Navigation One</at-menu-item>
-      <at-menu-item name="2" disabled><i class="icon icon-layers"></i>Navigation Two</at-menu-item>
-      <at-submenu>
-        <template slot="title"><i class="icon icon-life-buoy"></i>Navigation Three - Submenu</template>
-        <at-menu-item-group title="Group One">
-          <at-menu-item name="3-1">Submenu One</at-menu-item>
-          <at-menu-item name="3-2" disabled>Submenu Two</at-menu-item>
-        </at-menu-item-group>
-        <at-menu-item-group title="Group Two">
-          <at-menu-item name="3-3">Submenu Three</at-menu-item>
-          <at-menu-item name="3-4">Submenu Four</at-menu-item>
-        </at-menu-item-group>
-      </at-submenu>
-      <at-menu-item name="4"><i class="icon icon-settings"></i>Navigation Four</at-menu-item>
+    <at-menu mode="horizontal" class="menu" active-name="main-page" @on-select="handleNavigation">
+      <at-menu-item class="main-page" name="main-page"><i class="icon icon-home"></i>Main</at-menu-item>
+      <at-menu-item class="about-page" name="about-page"><i class="icon icon-layers"></i>About</at-menu-item>
+      <at-menu-item class="contact-page" name="contact-page"><i class="icon icon-settings"></i>Contact</at-menu-item>
     </at-menu>
     <router-view></router-view>
   </div>
@@ -22,7 +11,12 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  methods: {
+    handleNavigation: function (name) {
+      this.$router.push({ name })
+    }
+  }
 }
 </script>
 
